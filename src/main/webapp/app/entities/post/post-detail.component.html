@@ -1,0 +1,36 @@
+
+<div *ngIf="post">
+    <h2><span>Post</span> {{post.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Comment</span></dt>
+        <dd>
+            <span>{{post.comment}}</span>
+        </dd>
+        <dt><span>Date</span></dt>
+        <dd>
+            <span>{{post.date | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Tag</span></dt>
+        <dd>
+            <span *ngFor="let tag of post.tags; let last = last">
+                <a [routerLink]="['/tag', tag?.id ]">{{tag.id}}</a>{{last ? '' : ', '}}
+            </span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'post/'+ post.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

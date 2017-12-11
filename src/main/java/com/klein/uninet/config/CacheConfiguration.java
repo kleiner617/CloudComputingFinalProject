@@ -44,6 +44,10 @@ public class CacheConfiguration {
             cm.createCache(com.klein.uninet.domain.PersistentToken.class.getName(), jcacheConfiguration);
             cm.createCache(com.klein.uninet.domain.User.class.getName() + ".persistentTokens", jcacheConfiguration);
             cm.createCache(com.klein.uninet.domain.SocialUserConnection.class.getName(), jcacheConfiguration);
+            cm.createCache(com.klein.uninet.domain.Post.class.getName(), jcacheConfiguration);
+            cm.createCache(com.klein.uninet.domain.Post.class.getName() + ".tags", jcacheConfiguration);
+            cm.createCache(com.klein.uninet.domain.Tag.class.getName(), jcacheConfiguration);
+            cm.createCache(com.klein.uninet.domain.Tag.class.getName() + ".posts", jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }
